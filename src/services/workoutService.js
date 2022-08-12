@@ -6,13 +6,21 @@ const WorkoutDB = require("../database/WorkoutDB");
 
 
 const getAllWorkouts = () => {
-    const allWorkouts = WorkoutDB.getAllWorkouts();
-    return allWorkouts;
+    try {
+      const allWorkouts = WorkoutDB.getAllWorkouts();
+      return allWorkouts;
+    } catch (error) {
+      throw error;
+    }
   };
   
   const getOneWorkout = (workoutId) => {
-    const oneWorkout = WorkoutDB.getOneWorkout(workoutId);
-    return oneWorkout;
+    try {
+      const oneWorkout = WorkoutDB.getOneWorkout(workoutId);
+      return oneWorkout;
+    } catch (error) {
+      throw error;
+    }
   };
   
   const createNewWorkout = (newWorkout) => {
@@ -34,13 +42,21 @@ const getAllWorkouts = () => {
   };
   
   const updateOneWorkout = (workoutId, changes) => {
-    const updatedWorkout = WorkoutDB.updateOneWorkout(workoutId, changes);
-    return updatedWorkout;
+    try {
+      const updatedWorkout = WorkoutDB.updateOneWorkout(workoutId, changes);
+      return updatedWorkout;
+    } catch (error) {
+      throw error;    
+    }
   };
   
   const deleteOneWorkout = (workoutId) => {
-    const deletedWorkout = WorkoutDB.deleteOneWorkout(workoutId);
-    return deletedWorkout;
+    try {
+      const deletedWorkout = WorkoutDB.deleteOneWorkout(workoutId);
+      return deletedWorkout;
+    } catch (error) {
+      throw error;
+    }
   };
   
   module.exports = {
