@@ -12,7 +12,7 @@ router.post("/", workoutController.createNewWorkout);
 router.patch("/:workoutId", workoutController.updateOneWorkout);
 router.delete("/:workoutId", workoutController.deleteOneWorkout);
 
-// Rutas de la API para el controlador de records
+// Rutas de la API para el asocio de los controladores de Workout y Records
 router.get("/:workoutId/records", recordController.getAllRecords);
 router.get("/records", recordController.getAllRecords);
 router.get("/:workoutId/records/:recordId", recordController.getOneRecord);

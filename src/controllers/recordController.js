@@ -60,41 +60,41 @@ const recordService= require("../services/recordService");
     }
   };
   
-  const updateOneWorkout = (req, res) => {
+  const updateOneRecord = (req, res) => {
     const { 
         body,
-        params: {workoutId}
+        params: {recordId}
     } = req;
 
-    if(!workoutId){
+    if(!recordId){
        res.status(400)
        .send({
            status: 'FAILED', 
-           data: { error: "Parameter ':workoutId' can not be empty" },
+           data: { error: "Parameter ':recordId' can not be empty" },
            message: 'Missing parameters'
        });
     }
     
     try {
-      const updatedWorkout = recordService.updateOneWorkout(workoutId, body);
-      res.send({status: 'OK', data: updatedWorkout, message: 'Workout updated'});
+      const updatedRecord = recordService.updateOneRecord(recordId, body);
+      res.send({status: 'OK', data: updatedRecord, message: 'Record updated'});
     } catch (error) {
       res.status(error.status || 500)
-         .send({status: 'FAILED', data: { error: error.message || error }, message: 'Error updating workout'});
+         .send({status: 'FAILED', data: { error: error.message || error }, message: 'Error updating record'});
     }
   };
   
-  const deleteOneWorkout = (req, res) => {
-    const { params: {workoutId} } = req;
+  const deleteOneRecord = (req, res) => {
+    const { params: {recordId} } = req;
 
-    if(!workoutId){return res.send({status: 'ERROR', data: null, message: 'El entrenamiento no existe.'});}
+    if(!recordId){return res.send({status: 'ERROR', data: null, message: 'record does not exist.'});}
     
     try {
-      const deleteWorkout = recordService.deleteOneWorkout(workoutId);
-      res.status(204).send({status: 'DELETED', data: deleteWorkout, message: 'Workout deleted'});
+      const deleteRecord = recordService.deleteOneRecord(recordId);
+      res.status(204).send({status: 'DELETED', data: deleteRecord, message: 'Record deleted'});
     } catch (error) {
       res.status(error.status || 500)
-         .send({status: 'FAILED', data: { error: error.message || error }, message: 'Error deleting workout'});
+         .send({status: 'FAILED', data: { error: error.message || error }, message: 'Error deleting record'});
     } 
   };
   
@@ -102,6 +102,6 @@ const recordService= require("../services/recordService");
     getAllRecords,
     getOneRecord,
     createNewRecord,
-    updateOneWorkout,
-    deleteOneWorkout,
+    updateOneRecord,
+    deleteOneRecord,
   };
