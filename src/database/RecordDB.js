@@ -11,6 +11,21 @@ const getAllRecords = () => {
     }
   };
 
+  const getOneRecord = (recordId) => {
+    try {
+      const record = DB.records.find((record) => record.id === recordId);
+      if(!record) {
+          throw {
+            status: 404, 
+            message: `Record with the id ${recordId} already exists.`,
+          };
+      }
+    return record;
+    } catch (error) {
+      throw { status: error.status || 500, message: error.message || error };
+    }
+};
+
 const getRecordForWorkout = (recordId) => {
   try {
     const record = DB.records.filter((record) => record.workout === recordId);
@@ -79,6 +94,7 @@ const deleteOneRecord = (recordId) => {
 
 module.exports = {
     getAllRecords,
+    getOneRecord,
     getRecordForWorkout,
     createNewRecord,
     updateOneRecord,
