@@ -50,11 +50,11 @@ const memberService = require("../services/memberService");
         }
 
     const newMember = {
-        workout: body.name,
-        record: body.gender,
-        date: body.dateOfBirth,
-        weight: body.email,
-        height: body.password
+        name: body.name,
+        gender: body.gender,
+        dateOfBirth: body.dateOfBirth,
+        email: body.email,
+        password: body.password
     }
   
     try {

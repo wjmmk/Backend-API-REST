@@ -40,7 +40,7 @@ const createNewMember = (newMember) => {
 
 const updateOneMember = (memberId, changes) => {
   try {
-    const updatedMember = RecordDB.updateOneMember(memberId, changes);
+    const updatedMember = MemberDB.updateOneMember(memberId, changes);
     return updatedMember;
   } catch (error) {
     throw error;    
@@ -49,7 +49,7 @@ const updateOneMember = (memberId, changes) => {
 
 const deleteOneMember = (memberId) => {
   try {
-    const deletedMember = RecordDB.deleteOneMember(memberId);
+    const deletedMember = MemberDB.deleteOneMember(memberId);
     return deletedMember;
   } catch (error) {
     throw error;

@@ -163,14 +163,6 @@
       "dateOfBirth": "08/04/1993",
       "email": "greg@mail.com",
       "password": "a6dcde7eceb689142f21a1e30b5fdb868ec4cd25d5537d67ac7e8c7816b0e862"
-    },
-    {
-      "workout": "Maria Aldana",
-      "record": "Male",
-      "date": "15/12/1900",
-      "weight": "MariaA-1900@hotmail.com",
-      "height": "123456",
-      "id": "bab1c697-0893-47d0-9bd9-efa9bf14002e"
     }
   ],
   "records": [
