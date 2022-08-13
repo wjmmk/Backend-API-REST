@@ -14,7 +14,6 @@ router.delete("/:workoutId", workoutController.deleteOneWorkout);
 
 // Rutas de la API para el asocio de los controladores de Workout y Records
 router.get("/:workoutId/records", recordController.getAllRecords);
-router.get("/records", recordController.getAllRecords);
 router.get("/:workoutId/records/:recordId", recordController.getOneRecord);
 /* router.post("/:workoutId/records", recordController.createNewRecord);
 router.patch("/:workoutId/records/:recordId", recordController.updateOneRecord);   
