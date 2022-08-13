@@ -3,9 +3,23 @@ const DB = require("./db.json");
 // import el paquete de utils para poder usar el metodo saveToDatabase
 const { saveToDatabase } = require("./utils");
 
-const getAllWorkouts = () => {
+const getAllWorkouts = (filterParams) => {
   try {
-    return DB.workouts;
+    let workouts = DB.workouts;
+    if(filterParams.mode) {
+      return DB.workouts.filter((workout) => workout.mode.toLowerCase().includes(filterParams.mode));
+    }
+    if(filterParams.name) {
+      return DB.workouts.filter((workout) => workout.name.toLowerCase().includes(filterParams.name));
+    }
+    if(filterParams.exercises) {
+      return DB.workouts.filter((workout) => workout.exercises.toLocaleString().includes(filterParams.exercises));
+    }
+    if(filterParams.equipment) {
+      return DB.workouts.filter((workout) => workout.equipment.toLocaleString().includes(filterParams.equipment));
+    }
+    // Other if-statements can be added here for different parameters
+    return workouts;
   } catch (error) {
     throw {status: 500, message: error.message || error};
   }

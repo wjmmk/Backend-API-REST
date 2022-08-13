@@ -32,6 +32,26 @@ const recordService= require("../services/recordService");
          .send({status: 'FAILED', data: { error: error.message || error }, message: 'Error getting record'});
     }
   };
+
+  const getRecordForWorkout = (req, res) => {
+    const { params: {workoutId} } = req;
+    if (!workoutId) {
+        res.status(400)
+            .send({
+                status: 'FAILED',
+                data: { error: "Parameter ': workoutId' can not be empty" },
+                message: 'Missing parameters'
+            });
+    }
+
+    try {
+        const record = recordService.getRecordForWorkout(workoutId);
+        res.send({status: 'OK', data: record, message: 'Record retrieved'});
+    } catch (error) {
+        res.status(error.status || 500)
+            .send({status: 'FAILED', data: { error: error.message || error }, message: 'Error getting record'});
+    }
+  };
   
   const createNewRecord = (req, res) => {
     const {body} = req;
@@ -101,6 +121,7 @@ const recordService= require("../services/recordService");
   module.exports = {
     getAllRecords,
     getOneRecord,
+    getRecordForWorkout,
     createNewRecord,
     updateOneRecord,
     deleteOneRecord,
