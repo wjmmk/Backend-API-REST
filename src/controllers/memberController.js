@@ -25,7 +25,7 @@ const memberService = require("../services/memberService");
     }
 
     try {
-      const member = memberService.getRecordForWorkout(memberId);
+      const member = memberService.getOneMember(memberId);
       res.send({status: 'OK', data: member, message: 'Member retrieved'});
     } catch (error) {
       res.status(error.status || 500)
